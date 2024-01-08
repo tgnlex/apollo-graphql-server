@@ -1,9 +1,10 @@
 import express from 'express';
 import helmet from 'helmet';
 import {createServer} from 'node:http' 
+import {reqTime} from './mw.ts';
 const app = express();
 const server = createServer(app)
-
+app.use(reqTime)
 app.use(helmet())    
 const startExpress = () => {
   app.get('/', (req, res, next) => {
