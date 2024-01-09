@@ -8,7 +8,7 @@ async function startApollo() {
     schema
   });
     const {url} = await startStandaloneServer(graphServer, {
-    listen: { port: 5000 },
+    listen: { port                          : 5000 },
 });
 console.log(`[Apollo]: Graphql Server ready at:${ url }`)
 }

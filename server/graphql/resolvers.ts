@@ -1,11 +1,17 @@
-import {PrismaClient} from '@prisma/client';
-
-const prisma = new PrismaClient();
 
 const resolvers = {
-    Query: {
-        getUser: () => Users,
-        allUsers: () => [Users], 
+  SearchResult: {
+    __resolveType(obj, contextValue, info){
+    if (obj.name) {
+      return "User";
+    }
+    if (obj.title) {
+        return "Post";
+    }
+  }
+},
+Query: {
+  search: () => {}
     },
 };
 

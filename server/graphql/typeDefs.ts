@@ -1,8 +1,10 @@
-
+import GraphQLJSON from 'graphql-type-json';
 const typeDefs  = `
-type User {
-  id: ID!
-  nickname: String!
+  scalar JSON
+  
+  type User {
+  id : ID! 
+  name: String!
   email: String!
   passsword: String!
   avatar: Avatar
@@ -92,7 +94,12 @@ enum BorderColor {
   ORANGE
 }
 
+union SearchResult = User | Post
+
+
+
 type Query {
+    search(contains: String): [SearchResult!]
     getUser: User
     allUsers: [User]
 
